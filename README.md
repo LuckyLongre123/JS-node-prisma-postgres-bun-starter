@@ -104,7 +104,7 @@ Inside your project dashboard:
 
 1. Go to **Dashboard**
 2. click **Connect** button, the window opens
-3. in window, locate *Copy snippet* and click, the connection string copies to your clipboard
+3. in window, MUST Select *connection polling*, locate *Copy snippet* and click, the connection string copies to your clipboard
 
 It will look similar to this:
 
