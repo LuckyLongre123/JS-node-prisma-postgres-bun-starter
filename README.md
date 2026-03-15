@@ -65,7 +65,7 @@ prisma.config.ts
 Add your **PostgreSQL connection string** inside the `.env` file:
 
 ```env
-NEON_URL=your_database_connection_string
+DATABASE_URL=your_database_connection_string
 ```
 
 ---
@@ -133,7 +133,7 @@ You can create additional models as needed.
 
 # Step 6 — Run Migration and Generate Prisma Client
 
-Run the migration command:
+Run the migration command: **(this will take time)**
 
 ```bash
 bunx prisma migrate dev --name init
@@ -142,27 +142,21 @@ bunx prisma migrate dev --name init
 This command:
 
 * Converts your **Prisma schema into SQL queries**
-* Creates migration files inside:
-
-```
-prisma/migrations
-```
+* Success message after successfully run this command: *Your database is now in sync with your schema.*
+* Creates migration files inside: => **./prisma/migrations**
 
 Now generate the Prisma Client:
 
 ```bash
 bunx prisma generate
 ```
+* Success message after successfully run this command: *Generated Prisma Client ...*
 
 ---
 
 # Step 7 — Create Prisma Client in Your Code
 
-Create a new file:
-
-```
-lib/db.js
-```
+### Create `db.js` in the *lib* Folder
 
 Add the following code:
 
@@ -198,6 +192,8 @@ export default prisma;
 ---
 
 ### Create `index.js` in the Root Directory
+
+Add the following code:
 
 ```javascript
 import { checkDB } from "./lib/db.js";
