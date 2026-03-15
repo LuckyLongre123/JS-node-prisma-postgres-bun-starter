@@ -68,6 +68,63 @@ Add your **PostgreSQL connection string** inside the `.env` file:
 DATABASE_URL=your_database_connection_string
 ```
 
+
+
+## Getting a PostgreSQL Connection String from Neon
+
+If you don't have a PostgreSQL database, you can quickly create one using **Neon**, a serverless PostgreSQL platform.
+
+### Step 1 — Create an Account
+
+Go to:
+
+```
+https://neon.com
+```
+
+Sign up using **GitHub, Google, or email**.
+
+---
+
+### Step 2 — Create a New Project
+
+After logging in:
+
+1. Click **Create Project**
+2. Enter a project name
+3. Select a region close to you
+4. Click **Create Project**
+
+Neon will automatically create a **PostgreSQL database instance**.
+
+---
+
+### Step 3 — Copy the Connection String
+
+Inside your project dashboard:
+
+1. Go to **Dashboard**
+2. Locate **Connection Details**
+3. Copy the **Connection String**
+
+It will look similar to this:
+
+```env
+postgresql://username:password@hostname/database?sslmode=require
+```
+
+---
+
+### Step 4 — Add It to Your `.env` File
+
+Paste the connection string into your `.env` file:
+
+```env
+NEON_URL=postgresql://username:password@hostname/database?sslmode=require
+```
+
+Now Prisma can connect to your **Neon PostgreSQL database**.
+
 ---
 
 # Step 4 — Configure Prisma for JavaScript
