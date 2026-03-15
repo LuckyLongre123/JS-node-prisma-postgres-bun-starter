@@ -1,7 +1,8 @@
 # Prisma + PostgreSQL + Node.js Setup (Without TypeScript) using ES Modules and Bun
 
-This guide explains how to integrate **Prisma ORM**, **PostgreSQL**, and **Node.js** without TypeScript using **ES Modules** and **Bun** for package installation.
+This guide explains how to integrate **Prisma ORM**, **PostgreSQL**, **Node.js**, and **Neon** using **ES Modules**, without TypeScript.
 
+**Note:** This guide uses **Bun** for installing packages because it is very fast. Bun is optional — if you don't have it, you can use **npm** and **npx** instead.
 ---
 
 # Step 1 — Initialize Node.js Project
@@ -68,13 +69,11 @@ Add your **PostgreSQL connection string** inside the `.env` file:
 DATABASE_URL=your_database_connection_string
 ```
 
-
-
 ## Getting a PostgreSQL Connection String from Neon
 
 If you don't have a PostgreSQL database, you can quickly create one using **Neon**, a serverless PostgreSQL platform.
 
-### Step 1 — Create an Account
+### Step I — Create an Account
 
 Go to:
 
@@ -86,7 +85,7 @@ Sign up using **GitHub, Google, or email**.
 
 ---
 
-### Step 2 — Create a New Project
+### Step II — Create a New Project
 
 After logging in:
 
@@ -99,13 +98,13 @@ Neon will automatically create a **PostgreSQL database instance**.
 
 ---
 
-### Step 3 — Copy the Connection String
+### Step III — Copy the Connection String
 
 Inside your project dashboard:
 
 1. Go to **Dashboard**
-2. Locate **Connection Details**
-3. Copy the **Connection String**
+2. click **Connect** button, the window opens
+3. in window, locate *Copy snippet* and click, the connection string copies to your clipboard
 
 It will look similar to this:
 
@@ -115,12 +114,12 @@ postgresql://username:password@hostname/database?sslmode=require
 
 ---
 
-### Step 4 — Add It to Your `.env` File
+### Step IV — Add It to Your `.env` File
 
 Paste the connection string into your `.env` file:
 
 ```env
-NEON_URL=postgresql://username:password@hostname/database?sslmode=require
+DATABASE_URL=postgresql://username:password@hostname/database?sslmode=require
 ```
 
 Now Prisma can connect to your **Neon PostgreSQL database**.
@@ -143,7 +142,7 @@ export default defineConfig({
     path: "prisma/migrations",
   },
   datasource: {
-    url: env("NEON_URL"),
+    url: env("DATABASE_URL"),
   },
 });
 ```
@@ -227,7 +226,7 @@ const { PrismaClient } = pkg;
 import { PrismaPg } from "@prisma/adapter-pg";
 
 const adapter = new PrismaPg({
-  connectionString: process.env.NEON_URL,
+  connectionString: process.env.DATABASE_URL,
 });
 
 const prisma = new PrismaClient({ adapter });
