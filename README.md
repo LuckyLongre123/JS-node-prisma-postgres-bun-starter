@@ -2,7 +2,7 @@
 
 This guide explains how to integrate **Prisma ORM**, **PostgreSQL**, **Node.js**, and **Neon** using **ES Modules**, without TypeScript.
 
-**Note:** This guide uses **Bun** for installing packages because it is very fast. Bun is optional — if you don't have it, you can use **npm** and **npx** instead.
+ ### **Note:** This guide uses **Bun** for installing packages because it is very fast. Bun is optional — if you don't have it, you can use **npm** and **npx** instead.
 ---
 
 # Step 1 — Initialize Node.js Project
